@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
   late PageController _pageController;
 
-
   @override
   void initState() {
     super.initState();
@@ -42,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _scrollController.dispose();
     _pageController.dispose();
-   
+
     super.dispose();
   }
 
@@ -58,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void _jumpToPage(int index) {
     _pageController.jumpToPage(index);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () {
-                               
                                 provider.selectUser(index);
-                                _scrollToSelectedIndex(
-                                    index);
+                                _scrollToSelectedIndex(index);
                                 _jumpToPage(index);
                               },
                               child:
@@ -93,13 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: PageView.builder(
-                        controller: _pageController, 
+                        controller: _pageController,
                         itemCount: provider.storyDataList.length,
                         onPageChanged: (index) {
-                        
                           provider.selectUser(index);
-                          _scrollToSelectedIndex(
-                              index); 
+                          _scrollToSelectedIndex(index);
                         },
                         itemBuilder: (context, index) {
                           final data = provider.storyDataList[index];
@@ -143,17 +137,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildStory(StoryData storyData) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
-          radius: 35,
-          backgroundImage:
-              CachedNetworkImageProvider(storyData.profilePicture.toString()),
+          child: Container(
+              width: 100.w,
+              height: 100.h,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 120, 21, 21),
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+              ),
+              padding: EdgeInsets.all(1),
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.network(storyData.profilePicture.toString(),
+                        fit: BoxFit.fill)),
+              )),
+          radius: 30,
         ),
-        SizedBox(height: 5),
-        Text(
-          storyData.userName.toString(),
-          style: TextStyle(color: Colors.black),
-        ),
+        const SizedBox(height: 5),
+        Container(
+          width: 65.w,
+          child: Text(
+            storyData.userName.toString(),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Colors.black, fontSize: 10),
+          ),
+        )
       ],
     );
   }
@@ -161,20 +175,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildStoryView(Stories story, StoryData data) {
     return Stack(
       children: [
-      
         Positioned.fill(
-          child: 
-          story.mediaType == "image"
-              ?ImageScreen(
-                  story: story, data: data)
-               
-              :
-               ContentScreen(
-                  story: story, data: data),
+          child: story.mediaType == "image"
+              ? ImageScreen(story: story, data: data)
+              : ContentScreen(story: story, data: data),
         ),
-       
       ],
     );
   }
-
 }
