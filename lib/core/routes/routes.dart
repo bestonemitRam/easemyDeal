@@ -22,20 +22,14 @@ class MyRoutes {
         name: HOME,
         pageBuilder: (context, state) => const HomeScreen(),
       ),
-      //    animatedGoRoute(
-      //     path: SELECTACCOUNT,
-      //     name: SELECTACCOUNT,
-      //     pageBuilder: (context, state) => const SelectAccount(),
-      //   ),
+  
     ],
   );
 
   /// Route constants
   static const SPLASH = "/";
   static const HOME = "/home";
-  static const BOTTOM_NAV = "/home";
-  static const LOGIN = "/login";
-  static const ONBOARDING = "/onboarding";
+
 }
 
 GoRoute animatedGoRoute({
@@ -62,19 +56,3 @@ GoRoute animatedGoRoute({
   );
 }
 
-class CustomSlideTransition extends CustomTransitionPage<void> {
-  CustomSlideTransition({super.key, required super.child})
-      : super(
-          transitionDuration: const Duration(milliseconds: 250),
-          transitionsBuilder: (_, animation, __, child) {
-            return SlideTransition(
-              position: animation.drive(
-                Tween(begin: const Offset(1.5, 0), end: Offset.zero).chain(
-                  CurveTween(curve: Curves.bounceIn),
-                ),
-              ),
-              child: child,
-            );
-          },
-        );
-}

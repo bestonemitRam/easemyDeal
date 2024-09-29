@@ -67,6 +67,14 @@ class _HomeScreenState extends State<HomeScreen> {
             if (provider.storyDataList.isNotEmpty) {
               return Scaffold(
                 backgroundColor: Colors.white,
+                appBar: AppBar(
+                  toolbarHeight: 20,
+                  backgroundColor: Colors.transparent,
+                  title: Text(
+                    "Instagram Story",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
                 body: Column(
                   children: [
                     Container(

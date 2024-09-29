@@ -21,8 +21,7 @@ class _InternetNotAvailableState extends State<InternetNotAvailable> {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          height: height ?? 55.h,
-          //   width: 50.w,
+          
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +53,8 @@ class _InternetNotAvailableState extends State<InternetNotAvailable> {
                 ),
                 InkWell(
                   onTap: () {
-                    setState(() {
+                    setState(() 
+                    {
                       isRefresh = true;
                     });
                   },

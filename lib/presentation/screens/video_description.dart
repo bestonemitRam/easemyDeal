@@ -2,10 +2,10 @@ import 'package:easemydeal/data/model/stroy_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart'; 
+import 'package:video_player/video_player.dart';
 
 import 'dart:io';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart'; 
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class OptionsScreen extends StatelessWidget {
   final Stories? stories;
@@ -27,12 +27,10 @@ class OptionsScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 110),
+                  SizedBox(height: 10),
                   Row(children: [
                     CircleAvatar(
-                      child:  Container(
-                          width: 100.w,
-                          height: 100.h,
+                      child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -41,7 +39,7 @@ class OptionsScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(40),
                                 child: Image.network(
                                     data!.profilePicture.toString(),
                                     fit: BoxFit.fill)),
@@ -56,7 +54,9 @@ class OptionsScreen extends StatelessWidget {
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ]),
@@ -68,7 +68,7 @@ class OptionsScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -76,7 +76,7 @@ class OptionsScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.2,
                     child: Text(
                       stories!.textDescription!,
-                      style: TextStyle(color: Colors.white, fontSize: 10),
+                      style: TextStyle(color: Colors.white, fontSize: 13),
                     ),
                   ),
                 ],

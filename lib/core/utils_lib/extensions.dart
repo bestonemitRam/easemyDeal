@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
-
-
 import 'package:loader_overlay/loader_overlay.dart';
 
 extension ContextExtension on BuildContext {
-  void to({required Widget screen}) {
+  void to({required Widget screen}) 
+  {
     Navigator.push(this, MaterialPageRoute(builder: (context) => screen));
   }
 
@@ -18,35 +16,7 @@ extension ContextExtension on BuildContext {
     GoRouter.of(this).pushReplacement(routePath, extra: args);
   }
 
-  /// Get color scheme
-  ColorScheme get appColor => Theme.of(this).colorScheme;
-
-  /// Get current height of the screen
-  double get height => MediaQuery.of(this).size.height;
-
-  /// Get current height of the screen
-  double get width => MediaQuery.of(this).size.width;
-
-  /// Provides safe context
-  BuildContext? getSafeContext() {
-    if (mounted) {
-      return this;
-    }
-    return null;
   }
-
-  /// show global loader
-  void showLoader({bool show = true}) 
-  {
-    if (mounted) {
-      if (show) {
-        loaderOverlay.show();
-      } else {
-        loaderOverlay.hide();
-      }
-    }
-  }
-}
 
 
 

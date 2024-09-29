@@ -92,7 +92,9 @@ class _ContentScreenState extends State<ContentScreen> {
       );
     } else {
       return Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.blue,
+        ),
       );
     }
   }
