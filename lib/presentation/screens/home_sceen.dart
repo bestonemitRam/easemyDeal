@@ -60,8 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Provider.of<InternetConnectionStatus>(context) ==
-            InternetConnectionStatus.disconnected
+    return Provider.of<InternetConnectionStatus>(context) ==InternetConnectionStatus.disconnected
         ? InternetNotAvailable()
         : Consumer<StoryProvider>(builder: (context, provider, child) {
             if (provider.storyDataList.isNotEmpty) {

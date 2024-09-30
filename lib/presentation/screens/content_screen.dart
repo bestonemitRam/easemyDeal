@@ -48,7 +48,7 @@ class _ContentScreenState extends State<ContentScreen> {
           _isVideoInitialized = true;
         });
         _videoPlayerController.play();
-        _videoPlayerController.setVolume(0.0);
+        _videoPlayerController.setVolume(1.0);
       });
   }
 
